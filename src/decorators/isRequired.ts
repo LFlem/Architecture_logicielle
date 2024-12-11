@@ -1,0 +1,1 @@
+import { MetadataManager } from "../core/MetadataManager";
