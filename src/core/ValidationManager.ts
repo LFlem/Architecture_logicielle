@@ -1,4 +1,5 @@
 import { MetadataManager } from "./MetadataManager";
+import { ValidationError } from "../errors/ValidationError";
 
 export class ValidationManager {
   static validate(obj: any): string[]{
@@ -9,6 +10,9 @@ export class ValidationManager {
         errors.push(...rule.validate(obj[key], obj));
       }
     }
+    if (errors.length > 0)
+      throw new ValidationError(errors);
+
     return errors;
   }
 }
