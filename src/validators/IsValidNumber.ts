@@ -1,6 +1,6 @@
 import { Validator } from "./Validator";
 
-export class IsValidNbr implements Validator {
+export class IsValidNumber implements Validator {
     validate(value: any, context?: any): string[] {
         const numb = typeof value === 'number' ? value : Number(value);
         if (isNaN(numb)) {
