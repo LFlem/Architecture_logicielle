@@ -24,4 +24,9 @@ export class ValidationError extends Error {
   public formatErrors(): string {
     return this.errors.join('\n');
   }
+
+  public toJSON() {
+    return { message: this.message, errors: this.errors };
+  }
+  
 }

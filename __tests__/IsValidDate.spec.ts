@@ -18,6 +18,6 @@ describe('isValidDate', () => {
 
     it('should return an error for an invalid date instance', () => {
         const result = validator.validate(new Date('invalid date'));
-        expect(result).toEqual(['The value must be a valide date']);
+        expect(result).toEqual(['The value must be a valid date.']);
     });
 });

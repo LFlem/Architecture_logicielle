@@ -1,8 +1,19 @@
 import { MetadataManager } from '../core/MetadataManager';
 import { IsUpperThan } from '../validators/IsUpperThan';
 
-export function isUpperThan(reference: number | Date) {
-  return function (target: any, propertyKey: string) {
-    MetadataManager.storeRule(target, propertyKey, new IsUpperThan(reference));
+export function isUpperThan<T extends Object, V>(ref: number | Date) {
+  return function (
+      target: undefined,
+      context: ClassFieldDecoratorContext<T, V>
+  ) {
+      return function (this: T, value: V) {
+          const propertyKey = String(context.name);
+          MetadataManager.storeRule(
+              this.constructor.prototype,
+              propertyKey,
+              new IsUpperThan(ref)
+          );
+          return value;
+      };
   };
 }

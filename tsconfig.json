@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "types": ["reflect-metadata", "jest"],
     "module": "commonjs",
     "strict": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "outDir": "./dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "useDefineForClassFields": false,
+    "strictPropertyInitialization": false
+
   },
   "include": ["src/**/*"]
 }
