@@ -37,15 +37,11 @@ export class IsPassword implements Validator {
             return error;
         }
 
-        // const {
-
-        // } = this.opt;
-
         if (value.length < this.opt.minLength)
-            error.push('Password must be at least ${this.opt.minLength} characters long.');
+            error.push(`Password must be at least ${this.opt.minLength} characters long.`);
 
         if (value.length > this.opt.maxLength)
-            error.push('Password must not exceed ${this.opt.maxLength} characters.');
+            error.push(`Password must not exceed ${this.opt.maxLength} characters.`);
         if (!/[A-Z]/.test(value) && this.opt.requireUppercase) {
             error.push('Password must contain at least one uppercase letter.');
         }

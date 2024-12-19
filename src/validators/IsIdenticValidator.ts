@@ -11,7 +11,7 @@ export class IsIdenticValidator implements Validator {
         if (!context || !context[this.myfield])
             return ['The field is missing in the context!'];
         if (value !== context[this.myfield])
-            return ['The value must match of the field ${this.myfield}!'];
+            return [`The value must match of the field ${this.myfield}!`];
         return [];
     }
 }
