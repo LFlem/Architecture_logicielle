@@ -1,6 +1,15 @@
 import { MetadataManager } from '../core/MetadataManager';
 import { IsValidDate } from '../validators/IsValidDate';
 
+/**
+ * Decorator that validates if a value is a valid Date object
+ * @returns {PropertyDecorator} Property decorator function
+ * @example
+ * class Event {
+ *   @isValidDate()
+ *   startDate: Date;
+ * }
+ */
 export function isValidDate<T extends Object, V>() {
   return function (
     _target: undefined,

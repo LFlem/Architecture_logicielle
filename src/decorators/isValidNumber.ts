@@ -2,7 +2,13 @@ import { MetadataManager } from "../core/MetadataManager";
 import { IsValidNumber } from "../validators/IsValidNumber";
 
 /**
- * Décorateur pour valider que la valeur est un nombre valide
+ * Decorator that validates if a value is a valid number
+ * @returns {PropertyDecorator} Property decorator function
+ * @example
+ * class Payment {
+ *   @isValidNumber()
+ *   amount: number;
+ * }
  */
 export function isValidNumber<T extends Object, V>() {
   return function (

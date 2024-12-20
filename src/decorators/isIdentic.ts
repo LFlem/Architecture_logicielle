@@ -1,7 +1,16 @@
 import { MetadataManager } from '../core/MetadataManager';
 import { IsIdenticValidator } from '../validators/IsIdenticValidator';
 
-export function isIdentic<T extends Object, V>(field: string) {
+/**
+ * Decorator that validates if a field value matches another field's value
+ * @param {string} field - Name of the field to compare against
+ * @returns {PropertyDecorator} Property decorator function
+ * @example
+ * class User {
+ *   @isIdentic('confirmPassword')
+ *   password: string;
+ * }
+ */export function isIdentic<T extends Object, V>(field: string) {
   return function (
     _target: undefined,
     context: ClassFieldDecoratorContext<T, V>

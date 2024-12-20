@@ -1,14 +1,28 @@
 import { Validator } from "./Validator";
 
+/**
+ * Password validation options.
+ */
 export class PassWrdOpt {
+  /** Minimum password length */
   minLength: number;
+  /** Maximum password length */
   maxLength: number;
+  /** Require uppercase letters */
   requireUppercase: boolean;
+  /** Require lowercase letters */
   requireLowercase: boolean;
+  /** Require numbers */
   requireNumber: boolean;
+  /** Require special characters */
   requireSpecialChar: boolean;
+  /** Disallow spaces */
   noSpaces: boolean;
 
+  /**
+   * Creates password validation options.
+   * @param {Partial<PassWrdOpt>} [options] - Optional password requirements
+   */
   constructor(options?: Partial<PassWrdOpt>) {
     this.minLength = options?.minLength ?? 8;
     this.maxLength = options?.maxLength ?? 128;
@@ -20,12 +34,27 @@ export class PassWrdOpt {
   }
 }
 
+/**
+ * Password validator with customizable rules.
+ * @implements {Validator}
+ */
 export class IsPassword implements Validator {
   private opt: PassWrdOpt;
+
+  /**
+   * Creates a password validator.
+   * @param {Partial<PassWrdOpt>} [options] - Password validation options
+   */
   constructor(options?: Partial<PassWrdOpt>) {
     this.opt = new PassWrdOpt(options);
   }
 
+  /**
+   * Validates a password against configured rules.
+   * @param {any} value - Password to validate
+   * @param {any} [context] - Validation context
+   * @returns {string[]} Array of validation error messages
+   */
   validate(value: any, context?: any): string[] {
     const error: string[] = [];
 

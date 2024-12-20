@@ -1,6 +1,15 @@
 import { MetadataManager } from '../core/MetadataManager';
 import { IsNegativeValidator } from '../validators/IsNegativeValidator';
 
+/**
+ * Decorator that validates if a number is negative
+ * @returns {PropertyDecorator} Property decorator function
+ * @example
+ * class Temperature {
+ *   @isNegative()
+ *   belowZero: number;
+ * }
+ */
 export function isNegative<T extends Object, V>() {
   return function (
     _target: undefined,
