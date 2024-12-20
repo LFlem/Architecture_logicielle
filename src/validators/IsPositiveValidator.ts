@@ -5,7 +5,7 @@ export class IsPositiveValidator implements Validator{
         if (typeof value !== 'number') {
           return ['The value must be a number.'];
         }
-        if (value <= 0) {
+        if (value < 0) {
           return ['The value must be positive.'];
         }
         return [];

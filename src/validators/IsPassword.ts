@@ -34,10 +34,6 @@ export class IsPassword implements Validator {
       return error;
     }
 
-    // const {
-
-    // } = this.opt;
-
     if (value.length < this.opt.minLength)
       error.push(
         `Password must be at least ${this.opt.minLength} characters long.`
@@ -64,19 +60,3 @@ export class IsPassword implements Validator {
     return error;
   }
 }
-
-/*const defaultPas = new IsPassword();
-
-console.log(defaultPas.validate('Pass12345!'));
-console.log(defaultPas.validate('weakpass'));
-
-//
-
-const passwordValidator = new IsPassword({
-    minLength: 10,
-    requireSpecialChar: false,
-    noSpaces: false,
-});
-
-console.log(passwordValidator.validate('Pass12345'));
-console.log(passwordValidator.validate('pass12345'));*/
