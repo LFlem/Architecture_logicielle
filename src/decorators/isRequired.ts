@@ -3,8 +3,7 @@ import { IsRequiredValidator } from "../validators/IsRequiredValidator";
 
 /**
  * Decorator that marks a property as required
- * @param {Object} target - Class prototype
- * @param {string|symbol} propertyKey - Property name
+ * @returns {PropertyDecorator} Property decorator function
  */
 export function isRequired<T extends Object, V>() {
   return function (

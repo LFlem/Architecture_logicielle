@@ -1,6 +1,12 @@
 /**
  * Interface defining a validator.
- * @interface
+ * @interface Validator
+ * @example
+ * export class IsPositiveValidator implements Validator {
+ *   validate(value: any): string[] {
+ *     // Logic here
+ *   }
+ * }
  */
 export interface Validator {
   /**

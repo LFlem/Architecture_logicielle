@@ -9,10 +9,10 @@ export class MetadataManager {
 
   /**
    * Stores a validation rule for a property.
-   * @param {any} target - Target object
-   * @param {string|symbol} propertyKey - Property to validate
-   * @param {Validator} validator - Validator to apply
-   * @throws {Error} If invalid arguments provided
+   * @param target - The target object
+   * @param propertyKey - The property to validate
+   * @param validator - The validator to apply
+   * @throws {Error} If invalid arguments are provided
    */
   static storeRule(
     target: any,
@@ -34,10 +34,10 @@ export class MetadataManager {
   }
 
   /**
-   * Gets validation rules for a property.
-   * @param {any} target - Target object
-   * @param {string|symbol} propertyKey - Property to get rules for
-   * @returns {Validator[]} Array of validators
+   * Retrieves validation rules for a property.
+   * @param target - The target object
+   * @param propertyKey - The property to retrieve rules for
+   * @returns Array of validators associated with the property
    */
   static getRules(target: any, propertyKey: string | symbol): Validator[] {
     if (!target || !propertyKey) {

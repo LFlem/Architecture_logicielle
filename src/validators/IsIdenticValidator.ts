@@ -1,16 +1,14 @@
 /**
- * Validator that checks if a value matches another field's value
- * @implements {Validator}
- */
+ * Validator to check if a value is a valid number.
+ * Implements the {@link Validator} interface
+*/
 import { Validator } from "./Validator";
-
 export class IsIdenticValidator implements Validator {
   private myfield: string;
   /**
    * Creates a new identical value validator
    * @param {string} myfield - Name of the field to compare against
    */
-
   constructor(myfield: string) {
     this.myfield = myfield;
   }

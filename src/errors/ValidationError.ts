@@ -1,17 +1,15 @@
 /**
  * Custom error class for validation failures.
- * @extends Error
  */
 export class ValidationError extends Error {
   /**
-   * List of validation error messages
-   * @type {string[]}
+   * List of validation error messages.
    */
-  public errors: string[];
+    public errors: string[];
 
   /**
-   * Creates a new ValidationError instance
-   * @param {string[]} errors - Array of validation error messages
+   * Creates a new ValidationError instance.
+   * @param errors - Array of validation error messages
    */
   constructor(errors: string[]) {
     // Appelle le constructeur de la classe Error avec un message générique
@@ -25,16 +23,16 @@ export class ValidationError extends Error {
   }
 
   /**
-   * Formats all errors into a readable string
-   * @returns {string} Newline-separated error messages
+   * Formats all errors into a readable string.
+   * @returns A newline-separated string of error messages
    */
   public formatErrors(): string {
     return this.errors.join("\n");
   }
 
   /**
-   * Converts error to JSON format
-   * @returns {{message: string, errors: string[]}} JSON representation
+   * Converts the error to a JSON format.
+   * @returns JSON representation of the error
    */
   public toJSON() {
     return { message: this.message, errors: this.errors };

@@ -7,10 +7,10 @@ import { ValidationError } from "../errors/ValidationError";
 export class ValidationManager {
   /**
    * Validates an object using registered validation rules.
-   * @param {any} obj - Object to validate
-   * @returns {string[]} Array of validation error messages
+   * @param obj - The object to validate
+   * @returns Array of validation error messages
    * @throws {ValidationError} If validation fails
-   * @throws {Error} If invalid object provided
+   * @throws {Error} If an invalid object is provided
    */
   static validate(obj: any): string[] {
     if (!obj || typeof obj !== 'object') {

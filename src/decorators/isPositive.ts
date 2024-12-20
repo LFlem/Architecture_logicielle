@@ -3,8 +3,7 @@ import { IsPositiveValidator } from "../validators/IsPositiveValidator";
 
 /**
  * Decorator that validates if a number is positive
- * @param {Object} target - Class prototype
- * @param {string|symbol} propertyKey - Property name
+ * @returns {PropertyDecorator} Property decorator function
  */
 export function isPositive<T extends Object, V>() {
   return function (

@@ -6,6 +6,7 @@ export * from "./core/ValidationManager";
  * Validator library module
  * @module validator
  */
+export * from "./validators/Validator";
 
 // Decorator exports
 /**
@@ -50,12 +51,14 @@ import { ValidationManager } from "./core/ValidationManager";
 
 /**
  * Validates an object against its validation rules
- * @param {any} obj - Object to validate
- * @returns {string[]} Array of validation error messages
+ * @param obj - The object to validate
+ * @returns Array of validation error messages
  * @throws {ValidationError} If validation fails
  * @example
+ * ```typescript
  * const user = new User();
  * const errors = validate(user);
+ * ```
  */
 export function validate(obj: any): string[] {
   return ValidationManager.validate(obj);
