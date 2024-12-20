@@ -1,9 +1,9 @@
-import { Validator } from "./Validator";
 
 /**
  * Validator to check if a value is a valid Date object.
  * @implements {Validator}
- */
+*/
+import { Validator } from "./Validator";
 export class IsValidDate implements Validator {
   /**
    * Validates if the given value is a valid Date object.

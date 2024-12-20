@@ -1,9 +1,9 @@
-import { Validator } from "./Validator";
 
 /**
  * Validator to check if a value is greater than a reference value.
  * @implements {Validator}
- */
+*/
+import { Validator } from "./Validator";
 export class IsUpperThan implements Validator {
   private myref: number | Date;
 

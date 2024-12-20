@@ -1,9 +1,10 @@
-import { Validator } from "./Validator";
 
 /**
  * Validator to check if a number is positive.
  * @implements {Validator}
- */
+*/
+import { Validator } from "./Validator";
+
 export class IsPositiveValidator implements Validator {
   /**
    * Validates if a value is a positive number.

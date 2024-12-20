@@ -1,9 +1,9 @@
-import { Validator } from "./Validator";
 
 /**
  * Validator to check if a value is required (not null/undefined/empty).
  * @implements {Validator}
- */
+*/
+import { Validator } from "./Validator";
 export class IsRequiredValidator implements Validator {
   /**
    * Validates if a value is not null, undefined or empty.

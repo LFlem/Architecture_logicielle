@@ -1,7 +1,8 @@
+
 import { Validator } from "./Validator";
 /**
  * Validator to check if a value is a valid number.
- * @implements {Validator}
+ * Implements the {@link Validator} interface
  */
 export class IsValidNumber implements Validator {
   /**
