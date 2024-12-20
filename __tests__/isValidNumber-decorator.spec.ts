@@ -32,7 +32,17 @@ describe("isValidNumber Decorator", () => {
   test("should pass validation for strings that can be converted to numbers", () => {
     testInstance.numberField = "123";
 
-    expect(() => ValidationManager.validate(testInstance)).not.toThrow();
+    expect(() => ValidationManager.validate(testInstance)).toThrow(ValidationError);
+    try {
+      ValidationManager.validate(testInstance);
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        expect(error.errors).toContain("The property 'numberField' must be a valid number.");
+      } else {
+        throw error;
+      }
+    }
+
   });
 
   test("should fail validation for non-numeric strings", () => {

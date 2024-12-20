@@ -4,13 +4,9 @@ export class IsValidNumber implements Validator {
     if (value === undefined || value === null) {
       return [`The property '${context?.propertyName}' must be defined.`];
     }
-
-    const numb = typeof value === 'number' ? value : Number(value);
-
-    if (isNaN(numb)) {
+    if (typeof value !== 'number' || isNaN(value)) {
       return [`The property '${context?.propertyName}' must be a valid number.`];
     }
-
     return [];
   }
 }

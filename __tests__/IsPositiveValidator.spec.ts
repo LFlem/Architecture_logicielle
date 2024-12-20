@@ -7,7 +7,7 @@ describe('IsPositiveValidator', () => {
         validator = new IsPositiveValidator();
     });
 
-    it('should return no errors for positive numbers', () => {
+    it('should return no errors for positive numbers and zero', () => {
         expect(validator.validate(5)).toEqual([]);
         expect(validator.validate(0)).toEqual([]);
     });
@@ -15,7 +15,6 @@ describe('IsPositiveValidator', () => {
     it('should return an error for negative numbers', () => {
         expect(validator.validate(-3)).toEqual(['The value must be positive.']);
     });
-
 
     it('should return an error for non-number values', () => {
         expect(validator.validate('text')).toEqual(['The value must be a number.']);
