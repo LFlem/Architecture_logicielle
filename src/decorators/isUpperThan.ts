@@ -3,17 +3,17 @@ import { IsUpperThan } from '../validators/IsUpperThan';
 
 export function isUpperThan<T extends Object, V>(ref: number | Date) {
   return function (
-      target: undefined,
-      context: ClassFieldDecoratorContext<T, V>
+    _target: undefined,
+    context: ClassFieldDecoratorContext<T, V>
   ) {
-      return function (this: T, value: V) {
-          const propertyKey = String(context.name);
-          MetadataManager.storeRule(
-              this.constructor.prototype,
-              propertyKey,
-              new IsUpperThan(ref)
-          );
-          return value;
-      };
+    return function (this: T, value: V): V {
+      const propertyKey = String(context.name);
+      MetadataManager.storeRule(
+        this.constructor.prototype,
+        propertyKey,
+        new IsUpperThan(ref)
+      );
+      return value;
+    };
   };
 }

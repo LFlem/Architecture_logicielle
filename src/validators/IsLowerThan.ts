@@ -4,10 +4,19 @@ export class IsLowerThan implements Validator {
   private myref: number | Date;
 
   constructor(myref: number | Date) {
+    if (!myref) {
+      throw new Error("Reference value cannot be null or undefined.");
+    }
     this.myref = myref;
   }
 
   validate(value: any): string[] {
+    if (value === null || value === undefined) {
+      return value === null
+        ? ["The value cannot be null or undefined."]
+        : ["The reference cannot be null or undefined."];
+    }
+
     if (!this.isComparable(value)) {
       return ["The value must be a number or a valid date."];
     }

@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    // "experimentalDecorators": true,
+    // "emitDecoratorMetadata": true,
+    "target": "ES2022",
     "types": ["reflect-metadata", "jest"],
-    "module": "commonjs",
+    "module": "CommonJS",
     "strict": true,
     "outDir": "./dist",
     "esModuleInterop": true,
     "useDefineForClassFields": false,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "declaration": true,
 
   },
   "include": ["src/**/*"]

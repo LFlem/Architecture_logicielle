@@ -3,13 +3,23 @@ import { ValidationError } from "../errors/ValidationError";
 
 export class ValidationManager {
   static validate(obj: any): string[] {
-    const errors: string[] = [];
+    if (!obj || typeof obj !== 'object') {
+      throw new Error('Invalid object provided for validation');
+    }
 
-    for (const key of Object.keys(obj)) {
+    const errors: string[] = [];
+    const properties = Object.getOwnPropertyNames(obj);
+
+    for (const key of properties) {
       const rules = MetadataManager.getRules(obj, key);
+      const value = obj[key];
 
       for (const rule of rules) {
-        errors.push(...rule.validate(obj[key], { propertyName: key }));
+        const validationErrors = rule.validate(value, { 
+          propertyName: key, 
+          object: obj 
+        });
+        errors.push(...validationErrors);
       }
     }
 
