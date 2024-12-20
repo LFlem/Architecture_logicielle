@@ -100,22 +100,19 @@ export class CustomValidator implements Validator {
    - Implemented using TypeScript decorators.
    - Allows adding validation behaviors to properties.
 
-2. **Strategy Pattern**
-   - `Validator` interface defined.
-   - Various validation strategies (`IsRequired`, `IsPositive`, etc.) are available.
-   - Strategies are interchangeable and encapsulated.
-
-3. **Singleton Pattern**
-   - `MetadataManager` and `ValidationManager` are static classes.
-   - Provide a unique access point for managing metadata and validation.
-
-4. **Observer Pattern**
+2. **Observer Pattern**
    - Decorators observe property changes.
    - Triggers validation at the appropriate time.
 
-5. **Factory Method Pattern**
+3. **Factory Method Pattern**
    - Creation of validators through decorators.
    - Encapsulation of instance creation.
+
+4. **Composite**
+   - Many Validator can be applied at the same property
+
+5. **Builder**
+   - The PassWrdOpt class builds custom rules to validate passwords.
 
 ## API Documentation
 
