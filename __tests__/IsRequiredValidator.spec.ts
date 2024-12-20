@@ -8,9 +8,9 @@ describe("IsRequiredValidator", () => {
     });
 
     it('should return errors for null or undefined value ', () => {
-        expect(validator.validate(null)).toEqual(['The value is required cannot be null, undefined or empty.']);
-        expect(validator.validate(undefined)).toEqual(['The value is required cannot be null, undefined or empty.']);
-        expect(validator.validate('')).toEqual(['The value is required cannot be null, undefined or empty.']);
+        expect(validator.validate(null)).toEqual([`The property 'undefined' is required but is null, undefined, or empty.`]);
+        expect(validator.validate(undefined)).toEqual([`The property 'undefined' is required but is null, undefined, or empty.`]);
+        expect(validator.validate('')).toEqual([`The property 'undefined' is required but is null, undefined, or empty.`]);
     });
 
     it('should return no errors for a other value ', () => {

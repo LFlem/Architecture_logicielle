@@ -1,7 +1,10 @@
 import { MetadataManager } from "../core/MetadataManager";
-import { IsRequiredValidator } from "../validators/IsRequiredValidator";
+import { IsValidNumber } from "../validators/IsValidNumber";
 
-export function isRequired<T extends Object, V>() {
+/**
+ * Décorateur pour valider que la valeur est un nombre valide
+ */
+export function isValidNumber<T extends Object, V>() {
   return function (
     _target: undefined,
     context: ClassFieldDecoratorContext<T, V>
@@ -11,7 +14,7 @@ export function isRequired<T extends Object, V>() {
       MetadataManager.storeRule(
         this.constructor.prototype,
         propertyKey,
-        new IsRequiredValidator()
+        new IsValidNumber()
       );
       return value;
     };

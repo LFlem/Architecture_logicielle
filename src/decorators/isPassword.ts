@@ -1,7 +1,8 @@
 import { MetadataManager } from "../core/MetadataManager";
-import { IsRequiredValidator } from "../validators/IsRequiredValidator";
+import { IsPassword } from "../validators/IsPassword";
+import { PassWrdOpt } from "../validators/IsPassword";
 
-export function isRequired<T extends Object, V>() {
+export function isPassword<T extends Object, V>(options?: Partial<PassWrdOpt>) {
   return function (
     _target: undefined,
     context: ClassFieldDecoratorContext<T, V>
@@ -11,7 +12,7 @@ export function isRequired<T extends Object, V>() {
       MetadataManager.storeRule(
         this.constructor.prototype,
         propertyKey,
-        new IsRequiredValidator()
+        new IsPassword(options)
       );
       return value;
     };

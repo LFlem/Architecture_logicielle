@@ -1,7 +1,7 @@
-import { MetadataManager } from "../core/MetadataManager";
-import { IsRequiredValidator } from "../validators/IsRequiredValidator";
+import { MetadataManager } from '../core/MetadataManager';
+import { IsLowerThan } from '../validators/IsLowerThan';
 
-export function isRequired<T extends Object, V>() {
+export function isLowerThan<T extends Object, V>(ref: number | Date) {
   return function (
     _target: undefined,
     context: ClassFieldDecoratorContext<T, V>
@@ -11,7 +11,7 @@ export function isRequired<T extends Object, V>() {
       MetadataManager.storeRule(
         this.constructor.prototype,
         propertyKey,
-        new IsRequiredValidator()
+        new IsLowerThan(ref)
       );
       return value;
     };

@@ -1,37 +1,40 @@
 import { Validator } from "./Validator";
 
 export class IsUpperThan implements Validator {
-    private myref: number | Date;
-    constructor(myref: number | Date) {
-        this.myref = myref;
+  private myref: number | Date;
+
+  constructor(myref: number | Date) {
+    if (!myref) {
+      throw new Error("Reference value cannot be null or undefined.");
+    }
+    this.myref = myref;
+  }
+
+  validate(value: any): string[] {
+    if (value === null || value === undefined) {
+      return value === null ? ['The value cannot be null or undefined.'] : ['The reference cannot be null or undefined.'];
     }
 
-    validate(value: any, context?: any): string[] {
-        const errors: string[] = [];
-        if (value === null || value === undefined) {
-            errors.push('The value to compare is missing!');
-            return errors;
-        }
-
-        if (typeof value === 'number') {
-            if (typeof this.myref !== 'number') {
-                errors.push('Reference must both be numbers.');
-                return errors;
-            }
-            if (value <= this.myref) {
-                errors.push('The value must be greater than reference.');
-            }
-        } else if (value instanceof Date) {
-            if (!(this.myref instanceof Date)) {
-                errors.push('Reference must both be dates.');
-                return errors;
-            }
-            if (value.getTime() <= this.myref.getTime()) {
-                errors.push('The value must be greater than reference.');
-            }
-        } else {
-            errors.push('The value must be a number or a valid date.');
-        }
-        return errors;
+    if (!this.isComparable(value)) {
+      return ["The value must be a number or a valid date."];
     }
+
+    if (typeof value === "number" && typeof this.myref === "number") {
+      return value > this.myref
+        ? []
+        : [`The value must be greater than ${this.myref}.`];
+    }
+
+    if (value instanceof Date && this.myref instanceof Date) {
+      return value.getTime() > this.myref.getTime()
+        ? []
+        : [`The value must be greater than ${this.myref.toISOString()}.`];
+    }
+
+    return ["Reference must be of the same type as the value."];
+  }
+
+  private isComparable(value: any): boolean {
+    return typeof value === "number" || value instanceof Date;
+  }
 }

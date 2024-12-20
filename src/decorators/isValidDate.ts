@@ -1,7 +1,7 @@
-import { MetadataManager } from "../core/MetadataManager";
-import { IsRequiredValidator } from "../validators/IsRequiredValidator";
+import { MetadataManager } from '../core/MetadataManager';
+import { IsValidDate } from '../validators/IsValidDate';
 
-export function isRequired<T extends Object, V>() {
+export function isValidDate<T extends Object, V>() {
   return function (
     _target: undefined,
     context: ClassFieldDecoratorContext<T, V>
@@ -11,7 +11,7 @@ export function isRequired<T extends Object, V>() {
       MetadataManager.storeRule(
         this.constructor.prototype,
         propertyKey,
-        new IsRequiredValidator()
+        new IsValidDate()
       );
       return value;
     };
