@@ -2,10 +2,12 @@ import { Validator } from "./Validator";
 
 export class IsRegexValidator implements Validator {
 
-
     private regex : RegExp;
-    constructor(regex : RegExp) {
+    private errmsg : string;
+
+    constructor(regex : RegExp, errmsg : string) {
         this.regex = regex;
+        this.errmsg = errmsg;
     }
     validate(value: any, context?: any): string[] {
         if (typeof value !== "string") {
@@ -14,7 +16,7 @@ export class IsRegexValidator implements Validator {
 
         const verif = this.regex.test(value);
         if (!verif) {
-            return['The value does not match the required pattern!'];
+            return[`Error: ${this.errmsg}`];
         }
         return [];
     }
